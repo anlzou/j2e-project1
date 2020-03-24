@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <typeAliases>
+        <package name="anlzou.com.entity"></package>
+    </typeAliases>
+    <environments default="mysql">
+        <!--配置数据库连接环境-->
+        <environment id="mysql">
+            <transactionManager type="JDBC"></transactionManager>
+            <!--数据源：driver、url、username、password-->
+            <dataSource type="POOLED">
+                <!-- 连接mysql数据库的驱动程序 -->
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <!-- 连接mysql数据库的地址 ,根据需求，修改数据库地址、接口、和数据库名称-->
+                <property name="url" value="jdbc:mysql://localhost:3306/zy"></property>
+                <!-- 连接mysql数据库的管理员 -->
+                <property name="username" value="root"></property>
+                <!-- 连接mysql数据库的管理员的密码 -->
+                <property name="password" value="anlzou"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 映射文件地址要记住把映射文件所在数据包中的"."换成“/” -->
+        <mapper resource="anlzou/com/entity/UsersMapper.xml"/>
+    </mappers>
+</configuration>

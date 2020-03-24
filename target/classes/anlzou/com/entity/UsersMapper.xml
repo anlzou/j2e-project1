@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="anlzou.com.dao.UsersDao">
+    <resultMap id="userBean" type="Users">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="pass" column="pass"></result>
+    </resultMap>
+    <!-- 查询数据表中所有数据 -->
+    <select id="queryAll" resultMap="userBean">
+        select * from users
+    </select>
+</mapper>
