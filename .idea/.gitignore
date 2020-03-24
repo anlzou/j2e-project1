@@ -3,5 +3,5 @@
 
 # myself
 /target/
-.idea
+/.idea/
 !.gitignore
