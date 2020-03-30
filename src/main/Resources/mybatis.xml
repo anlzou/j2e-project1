@@ -26,6 +26,7 @@
     </environments>
     <mappers>
         <!-- 映射文件地址要记住把映射文件所在数据包中的"."换成“/” -->
-        <mapper resource="anlzou/com/entity/UsersMapper.xml"/>
+<!--        <mapper resource="anlzou/com/entity/UsersMapper.xml"/>-->
+        <package name="anlzou.com.mapper"/>
     </mappers>
 </configuration>

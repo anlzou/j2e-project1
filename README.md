@@ -20,5 +20,12 @@ INSERT INTO zy values('aa','aa'),
 ('bb','bb'),
 ('cc','cc'),
 ```
-- Run   
+# Run   
 src\main\java\anlzou\com\test\UsersTest.java
+
+# Update
+> 2020年3月30日23点04分
+
+- MyBatis深入了解，完善项目结构
+- 添加了增删改查
+- 成功运行与调试

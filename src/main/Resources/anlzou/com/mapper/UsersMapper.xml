@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="anlzou.com.mapper.UsersMapper">
+    <resultMap id="userBean" type="Users">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="pass" column="pass"></result>
+    </resultMap>
+
+    <select id="selectById" resultMap="userBean">
+        select id,name,pass from users where id=#{id}
+    </select>
+
+    <select id="selectAll" resultMap="userBean">
+        select id,name,pass from users
+    </select>
+
+    <insert id="insertUsers"  parameterType="anlzou.com.entity.Users" >
+        insert into users(name,pass) values(#{name},#{pass})
+    </insert>
+
+    <update id="updateUsers" parameterType="Users">
+        update users set name=#{name},pass=#{pass} where id=#{id}
+    </update>
+
+    <delete id="deleteUsers" parameterType="long">
+      delete from users where  id=#{id}
+    </delete>
+
+    <select id="selectByNameAndPass" resultMap="userBean" parameterType="map">
+        select id,name,pass from users where name=#{name} and pass=#{pass}
+    </select>
+
+    <select id="selectByParam" resultMap="userBean" >
+        select id,name,pass from users where name=#{name}
+    </select>
+</mapper>
