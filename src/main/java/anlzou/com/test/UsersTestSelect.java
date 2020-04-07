@@ -24,5 +24,6 @@ public class UsersTestSelect {
         //通过mapper对象usersDao接口中的方法对数据表users进行读操作
         System.out.println(usersMapper.selectAll());
         System.out.println(usersMapper.selectById(2));
+        session.close();
     }
 }
