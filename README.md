@@ -21,7 +21,7 @@ INSERT INTO zy values('aa','aa'),
 ('cc','cc'),
 ```
 # Run   
-src\main\java\anlzou\com\test\*
+src\main\java\anlzou\com\test\\*
 
 # Update
 > 2020年3月30日23点04分

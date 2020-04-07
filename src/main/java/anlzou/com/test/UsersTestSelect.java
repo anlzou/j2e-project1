@@ -9,7 +9,6 @@ package anlzou.com.test;
 import anlzou.com.DBtools;
 import anlzou.com.mapper.UsersMapper;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import java.sql.SQLException;
 
 public class UsersTestSelect {
@@ -23,7 +22,7 @@ public class UsersTestSelect {
         UsersMapper usersMapper = session.getMapper(UsersMapper.class);
         //通过mapper对象usersDao接口中的方法对数据表users进行读操作
         System.out.println(usersMapper.selectAll());
-        System.out.println(usersMapper.selectById(2));
+        System.out.println(usersMapper.selectById(1));
         session.close();
     }
 }
