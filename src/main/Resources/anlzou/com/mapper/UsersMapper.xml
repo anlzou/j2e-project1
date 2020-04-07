@@ -35,4 +35,140 @@
     <select id="selectByParam" resultMap="userBean" >
         select id,name,pass from users where name=#{name}
     </select>
+
+<!--  动态if用法  -->
+    <!--  1、在where条件中使用if  -->
+    <select id="selectIdNamePass" parameterType="anlzou.com.entity.Users" resultMap="userBean">
+        select id,name,pass from users where 1=1
+        <if test="id != null and id>0">
+            and id=#{id}
+        </if>
+        <if test="name != null and name != ''">
+            and name=#{name}
+        </if>
+        <if test="pass != null and pass != ''">
+            and pass=#{pass}
+        </if>
+    </select>
+    <!--  2、在update中使用if  -->
+    <update id="updateUsersAnyField" parameterType="anlzou.com.entity.Users">
+        Update users set
+        <if test="name != null and name != ''">
+            name=#{name},
+        </if>
+        <if test="pass != null and pass != ''">
+            pass=#{pass},
+        </if>
+        id=#{id}
+        where id=#{id}
+    </update>
+    <!--  3、insert 动态插入列中使用 if  -->
+    <insert id="insertUsersAnyField" parameterType="anlzou.com.entity.Users">
+        insert into users(
+        name
+        <if test="pass !=null and pass !=''">
+            ,pass
+        </if>
+        )values (
+        #{name}
+        <if test="pass !=null and pass !=''">
+            ,pass
+        </if>
+        )
+    </insert>
+<!--  choose 用法  -->
+    <select id="selectUsersByChoose" parameterType="anlzou.com.entity.Users" resultMap="userBean" >
+        select id,name,pass from users where 1=1
+        <choose>
+            <when test="id !=null and id>0">
+                and id=#{id}
+            </when>
+            <when test="name != null and name != ''">
+                and name=#{name}
+            </when>
+            <when test="pass != null and pass != ''">
+                and pass=#{pass}
+            </when>
+            <otherwise>
+                and 1=2
+            </otherwise>
+        </choose>
+    </select>
+<!--  where用法  -->
+    <select id="selectByWhere" resultMap="userBean" parameterType="anlzou.com.entity.Users">
+        select id,name,pass from users
+        <where>
+            <if test="id != null and id>0">
+            and id=#{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name =#{name}
+            </if>
+            <if test="pass != null and pass != ''">
+                and pass=#{pass}
+            </if>
+        </where>
+    </select>
+<!--  set 用法  -->
+    <update id="updateUsersSet" parameterType="anlzou.com.entity.Users">
+        update users
+        <set>
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="pass != null and pass != ''">
+                pass=#{pass},
+            </if>
+            id=#{id}
+        </set>
+        where id=#{id}
+    </update>
+<!--  trim 用法  -->
+    <!--  1、用trim标签替代where  -->
+    <select id="selectUsersTrim" parameterType="anlzou.com.entity.Users" resultMap="userBean">
+        select id,name,pass from users
+        <trim  prefix="where"   prefixOverrides="AND|OR ">
+            <if test="id != null and id>0">
+                and id=#{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name =#{name}
+            </if>
+            <if test="pass != null and pass != ''">
+                and pass=#{pass}
+            </if>
+        </trim>
+    </select>
+    <!--  2、用trim标签替代set  -->
+    <update id="updateUsersTrim" parameterType="anlzou.com.entity.Users">
+        update users
+        <trim prefix="set" prefixOverrides=",">
+            <if test="name != null and name != ''">
+                name=#{name},
+            </if>
+            <if test="pass != null and pass != ''">
+                pass=#{pass},
+            </if>
+            id=#{id}
+        </trim>
+        where id=#{id}
+    </update>
+<!--  foreach 用法  -->
+    <!--  1、foreach实现in集合  -->
+    <select id="selectUsersForeachIn" resultMap="userBean">
+        select id,name,pass from users
+        where id in
+        <foreach collection="list" open="(" close=")" item="id" index="i" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <!--  2、foreach实现批量输入数据  -->
+    <insert id="insertUsersList" parameterType="java.util.List" keyProperty="id" useGeneratedKeys="true">
+        insert into users(name,pass) values
+        <foreach collection="list" item="us" index="i" separator=",">
+            (
+            #{us.name},#{us.pass}
+            )
+        </foreach>
+    </insert>
 </mapper>

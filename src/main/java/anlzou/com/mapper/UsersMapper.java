@@ -20,4 +20,14 @@ public interface UsersMapper {
     long deleteUsers(long id);
     List<Users> selectByNameAndPass(Map map);
     List<Users> selectByParam(@Param("name")String name);
+    List<Users> selectIdNamePass(Users users);
+    long updateUsersAnyField(Users users);
+    long insertUsersAnyField(Users users);
+    List<Users> selectUsersByChoose(Users users);
+    List<Users> selectByWhere(Users users);
+    long updateUsersSet(Users users);
+    List<Users> selectUsersTrim(Users users);
+    long updateUsersTrim(Users users);
+    List<Users> selectUsersForeachIn(List<Long> list);
+    long insertUsersList(List<Users> list);
 }

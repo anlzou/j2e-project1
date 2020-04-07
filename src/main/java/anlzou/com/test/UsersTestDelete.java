@@ -17,7 +17,7 @@ public class UsersTestDelete {
         SqlSession session= DBtools.getSqlSession();
         UsersMapper usersMapper=session.getMapper(UsersMapper.class);
         try {
-            long i=usersMapper.deleteUsers(2L);
+            long i=usersMapper.deleteUsers(9L);
             if(i>0){
                 System.out.println("删除数据成功");
             }else{
