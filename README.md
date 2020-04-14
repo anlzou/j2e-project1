@@ -24,6 +24,7 @@ INSERT INTO zy values('aa','aa'),
 src\main\java\anlzou\com\test\\*
 
 # Update
+#### v1.00
 > 2020年3月30日23点04分
 
 - MyBatis深入了解，完善项目结构
@@ -46,3 +47,11 @@ src\main\java\anlzou\com\test\\*
     - foreach 用法
         - 1、foreach实现in集合
         - 2、foreach实现批量输入数据 
+        
+#### v2.00
+> 2020年4月14日17点52分
+
+- 使用Mybatis 代码生成器
+    - MyBatis generator
+    - mybatis高级查询
+        - 一对一映射  

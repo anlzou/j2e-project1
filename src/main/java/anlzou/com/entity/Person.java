@@ -1,6 +1,6 @@
 package anlzou.com.entity;
 
-public class Users {
+public class Person {
     private Integer id;
 
     private String name;

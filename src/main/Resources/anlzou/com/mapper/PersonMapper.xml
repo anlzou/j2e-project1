@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="anlzou.com.mapper.UsersMapper" >
-  <resultMap id="BaseResultMap" type="anlzou.com.entity.Users" >
+<mapper namespace="anlzou.com.mapper.PersonMapper" >
+  <resultMap id="BaseResultMap" type="anlzou.com.entity.Person" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="pass" property="pass" jdbcType="VARCHAR" />
@@ -12,25 +12,25 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from users
+    from person
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from users
+    delete from person
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="anlzou.com.entity.Users" >
+  <insert id="insert" parameterType="anlzou.com.entity.Person" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into users (name, pass)
+    insert into person (name, pass)
     values (#{name,jdbcType=VARCHAR}, #{pass,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="anlzou.com.entity.Users" >
+  <insert id="insertSelective" parameterType="anlzou.com.entity.Person" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into users
+    insert into person
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="name != null" >
         name,
@@ -48,8 +48,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="anlzou.com.entity.Users" >
-    update users
+  <update id="updateByPrimaryKeySelective" parameterType="anlzou.com.entity.Person" >
+    update person
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="anlzou.com.entity.Users" >
-    update users
+  <update id="updateByPrimaryKey" parameterType="anlzou.com.entity.Person" >
+    update person
     set name = #{name,jdbcType=VARCHAR},
       pass = #{pass,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
