@@ -1,6 +1,7 @@
 package anlzou.com.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysUser {
     private Long id;
@@ -53,23 +54,38 @@ public class SysUser {
         this.createTime = createTime;
     }
 
+//    @Override
+//    public String toString() {
+//        final StringBuffer sb = new StringBuffer("SysUser{");
+//        sb.append("id=").append(id);
+//        sb.append(", userName='").append(userName).append('\'');
+//        sb.append(", userPassword='").append(userPassword).append('\'');
+//        sb.append(", userEmail='").append(userEmail).append('\'');
+//        sb.append(", createTime=").append(createTime);
+//        sb.append('}');
+//        return sb.toString();
+//    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("SysUser{");
-        sb.append("id=").append(id);
-        sb.append(", userName='").append(userName).append('\'');
-        sb.append(", userPassword='").append(userPassword).append('\'');
-        sb.append(", userEmail='").append(userEmail).append('\'');
-        sb.append(", createTime=").append(createTime);
-        sb.append('}');
-        return sb.toString();
+        return "sysUsers{id="+id+",userName="+userName+","+roleList;
     }
 
-    private  SysRole role;
-    public SysRole getRole() {
-        return role;
+
+//    private  SysRole role;
+//    public SysRole getRole() {
+//        return role;
+//    }
+//    public void setRole(SysRole role) {
+//        this.role = role;
+//    }
+
+    private List<SysRole> roleList;
+    public List<SysRole> getRoleList() {
+        return roleList;
     }
-    public void setRole(SysRole role) {
-        this.role = role;
+
+    public void setRoleList(List<SysRole> roleList) {
+        this.roleList = roleList;
     }
 }

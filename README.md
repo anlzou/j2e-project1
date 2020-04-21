@@ -66,6 +66,37 @@ INSERT INTO `sys_user_role` VALUES ('1', '1');
 INSERT INTO `sys_user_role` VALUES ('1', '2');
 INSERT INTO `sys_user_role` VALUES ('1001', '2');
 ```
+#### v2.10
+（1）权限表sys_privilege的结构如下
+```sql
+CREATE TABLE `sys_privilege` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
+  `privilege_name` varchar(50) DEFAULT NULL COMMENT '权限名称',
+  `privilege_url` varchar(200) DEFAULT NULL COMMENT '权限URL',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='权限表';
+
+- 向数据表权限表中输入如下数据
+INSERT INTO `sys_privilege` VALUES ('1', '用户管理', '/users');
+INSERT INTO `sys_privilege` VALUES ('2', '角色管理', '/roles');
+INSERT INTO `sys_privilege` VALUES ('3', '系统日志', '/logs');
+INSERT INTO `sys_privilege` VALUES ('4', '人员维护', '/persons');
+INSERT INTO `sys_privilege` VALUES ('5', '单位维护', '/companies');
+```
+ （2）角色权限关联表sys_role_privilege，表结构如下
+ ```sql
+CREATE TABLE `sys_role_privilege` (
+  `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
+  `privilege_id` bigint(20) DEFAULT NULL COMMENT '权限ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色权限关联表';
+
+- 向角色权限关联表中输入如下的记录
+INSERT INTO `sys_role_privilege` VALUES ('1', '1');
+INSERT INTO `sys_role_privilege` VALUES ('1', '3');
+INSERT INTO `sys_role_privilege` VALUES ('1', '2');
+INSERT INTO `sys_role_privilege` VALUES ('2', '4');
+INSERT INTO `sys_role_privilege` VALUES ('2', '5');
+```
 
 # Run   
 src\main\java\anlzou\com\test\\*
@@ -102,3 +133,8 @@ src\main\java\anlzou\com\test\\*
     - MyBatis generator
     - mybatis高级查询
         - 一对一映射  
+#### v2.10
+> 2020年4月20日16点35分
+- ...
+    - ...
+        - 一对多映射

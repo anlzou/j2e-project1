@@ -31,4 +31,6 @@ public interface SysUserMapper {
     List<SysUser> selectUsersRolec(Long id);
 
     List<SysUser> selectUsersRoled(Long id);
+
+    List<SysUser> selectUsersRoleList();
 }

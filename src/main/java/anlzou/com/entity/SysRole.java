@@ -1,6 +1,7 @@
 package anlzou.com.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysRole {
     private Long id;
@@ -51,5 +52,24 @@ public class SysRole {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "role{roleId="+id+",roleName="+roleName;
+//    }
+
+    private List<SysPrivilege> privilegeList;
+    public List<SysPrivilege> getPrivilegeList() {
+        return privilegeList;
+    }
+
+    public void setPrivilegeList(List<SysPrivilege> privilegeList) {
+
+        this.privilegeList = privilegeList;
+    }
+    @Override
+    public String toString() {
+        return "role{roleId="+id+",roleName="+privilegeList;
     }
 }
